@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Exponer el puerto de FastAPI
-EXPOSE 8000
+EXPOSE 8080
 
 # Comando para correr la app con Uvicorn
 # Usamos la sintaxis de shell para que pueda leer la variable de entorno
