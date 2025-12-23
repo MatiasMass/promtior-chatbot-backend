@@ -25,8 +25,7 @@ checkpointer = InMemorySaver()
 # Usamos create_agent que es el estándar actual
 agent = create_agent(
     model=llm,
-    system_prompt=SYSTEM_PROMPT,
-    context_schema=FORMATTED_SYSTEM_PROMPT,
+    system_prompt=FORMATTED_SYSTEM_PROMPT,
     # response_format=ToolStrategy(ResponseFormat),
     checkpointer=checkpointer
 )
