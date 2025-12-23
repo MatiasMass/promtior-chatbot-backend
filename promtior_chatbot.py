@@ -1,19 +1,22 @@
-import os
 from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
 from langchain_core.messages import HumanMessage
 from core.chat_model import llm_model
 from services.pdf import get_data_from_pdf
+from services.website_loader import get_data_from_website
 from core.system_prompt import SYSTEM_PROMPT
 
 load_dotenv()
 
 CONTEXT_DATA_PDF = get_data_from_pdf()
-FORMATTED_SYSTEM_PROMPT = SYSTEM_PROMPT.format(context=CONTEXT_DATA_PDF)
+CONTEXT_DATA_WEBSITE = get_data_from_website("https://www.promtior.ai/")
+FORMATTED_PDF_TEXT = "\n".join([doc.page_content for doc in CONTEXT_DATA_PDF])
+FORMATTED_DATA_WEBSITE_TEXT = " ".join([d.page_content for d in CONTEXT_DATA_WEBSITE])
+FORMATTED_SYSTEM_PROMPT = SYSTEM_PROMPT.format(context=FORMATTED_PDF_TEXT + "\n" + FORMATTED_DATA_WEBSITE_TEXT)
 
-#model = "ollama"
-#chat_model = "gemma3:12b"
+# model = "ollama"
+# chat_model = "gemma3:12b"
 model = "gemini"
 chat_model = "gemini-2.5-flash"
 
@@ -27,7 +30,7 @@ agent = create_agent(
     model=llm,
     system_prompt=FORMATTED_SYSTEM_PROMPT,
     # response_format=ToolStrategy(ResponseFormat),
-    checkpointer=checkpointer
+    checkpointer=checkpointer,
 )
 
 # --- 3. Función del Chatbot para WebSocket ---
