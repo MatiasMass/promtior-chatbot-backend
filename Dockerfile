@@ -20,4 +20,4 @@ EXPOSE 8000
 # Comando para correr la app con Uvicorn
 # Usamos la sintaxis de shell para que pueda leer la variable de entorno
 # ${PORT:-8000} significa: "Usa el puerto que me de Railway, si no hay ninguno, usa 8000"
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}"]
