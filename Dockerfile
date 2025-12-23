@@ -7,11 +7,6 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Instalar dependencias del sistema necesarias
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
 # Copiar archivos de dependencias
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
