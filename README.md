@@ -27,7 +27,7 @@ Inyección de Contexto (RAG): Desarrollé un sistema de ingesta de doble fuente.
 - https://docs.langchain.com/oss/python/langchain/streaming
 
 ## Diagrama de Secuencia:
-<img width="4084" height="3444" alt="image" src="https://github.com/user-attachments/assets/4c6ee407-16bd-424d-a84a-f8a310e06d71" />
+<img width="4284" height="3444" alt="image" src="https://github.com/user-attachments/assets/330f684e-b3df-4c5a-8287-eefce1bba2cf" />
 
 ## Demo:
 - Link frontend: https://promtior-chatbot-frontend-production.up.railway.app/
